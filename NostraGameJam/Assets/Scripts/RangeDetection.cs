@@ -1,10 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class RangeDetection : MonoBehaviour
 {
-
+   
   
     void Start()
     {
@@ -23,8 +24,13 @@ public class RangeDetection : MonoBehaviour
           
             
             GameManager.instance.assignCurrentTask(gameObject.tag);
+            if (other.gameObject.CompareTag("PickAxe"))
+            {
+
+            }
             
         }
+
     }
     private void OnTriggerExit(Collider other)
     {
