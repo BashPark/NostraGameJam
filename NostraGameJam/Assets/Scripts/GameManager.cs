@@ -25,13 +25,13 @@ public class GameManager : MonoBehaviour
     {
         currentTask = task;
         attackPanel.SetActive(true);
-        print(currentTask);
+        //print(currentTask);
     }
     public void deleteCurrentTask()
     {
         currentTask=null;
         attackPanel.SetActive(false);
-        print(currentTask);
+        //print(currentTask);
     }
     void Start()
     {
