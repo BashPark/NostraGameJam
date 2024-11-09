@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
-    private string currentTask=null;
+    public string currentTask=null;
     public GameObject attackPanel;
 
     private void Awake()

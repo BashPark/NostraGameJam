@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(Rigidbody), typeof(BoxCollider))]
+[RequireComponent(typeof(Rigidbody), typeof(CapsuleCollider))]
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -12,7 +12,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float moveSpeed;
 
     [SerializeField] private Animator MonkeyAnimator;
-    //[SerializeField] private Animator CavemanAnimator;
+    [SerializeField] private Animator CavemanAnimator;
     [SerializeField] private Animator FarmerAnimator;
 
     private void FixedUpdate()
@@ -31,17 +31,23 @@ public class PlayerMovement : MonoBehaviour
             if(MonkeyAnimator.gameObject.activeInHierarchy)
             {
                 MonkeyAnimator.SetBool("isRunning", true);
-                MonkeyAnimator.SetBool("isPicking", false);
             }
 
+
+            // For Caveman
+            if (CavemanAnimator.gameObject.activeInHierarchy)
+            {
+                CavemanAnimator.SetBool("isRunning", true);
+
+            }
 
             // For Farmer
             if (FarmerAnimator.gameObject.activeInHierarchy)
             {
                 FarmerAnimator.SetBool("isRunning", true);
-                FarmerAnimator.SetBool("isSwinging", false);
+
             }
-           
+
 
         }
         else
@@ -54,6 +60,13 @@ public class PlayerMovement : MonoBehaviour
                 MonkeyAnimator.SetBool("isRunning", false);
             }
 
+
+            // For Caveman
+            if (CavemanAnimator.gameObject.activeInHierarchy)
+            {
+                CavemanAnimator.SetBool("isRunning", false);
+
+            }
 
             // For Farmer
             if (FarmerAnimator.gameObject.activeInHierarchy)
@@ -71,15 +84,38 @@ public class PlayerMovement : MonoBehaviour
         // For Monkey
         if (MonkeyAnimator.gameObject.activeInHierarchy)
         {
-            MonkeyAnimator.SetBool("isPicking", true);
+            MonkeyAnimator.SetTrigger("Pick");
 
         }
            
+        // For CavemanPick
+        if (CavemanAnimator.gameObject.activeInHierarchy)
+        {
+            if(GameManager.instance.currentTask == "Berries")
+            {
+                CavemanAnimator.SetTrigger("Pick");
+
+            }
+           
+
+        }
+
+        // For CavemanSwing
+        if (CavemanAnimator.gameObject.activeInHierarchy)
+        {
+            if (GameManager.instance.currentTask == "Trees")
+            {
+                CavemanAnimator.SetTrigger("Swing");
+
+            }
+                
+
+        }
 
         // For Farmer
         if (FarmerAnimator.gameObject.activeInHierarchy)
         {
-            FarmerAnimator.SetBool("isSwinging", true);
+            FarmerAnimator.SetTrigger("Swing");
 
         }
            

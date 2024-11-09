@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4414421155576013061}
   - component: {fileID: 3900810047815506288}
   m_Layer: 0
-  m_Name: sweep10
+  m_Name: Banana1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -95,7 +95,7 @@ GameObject:
   - component: {fileID: 2050704497979977252}
   - component: {fileID: 177783031537899197}
   m_Layer: 0
-  m_Name: sweep11
+  m_Name: Banana2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -178,7 +178,7 @@ GameObject:
   - component: {fileID: 1359669630888059750}
   - component: {fileID: 5337503366111789669}
   m_Layer: 0
-  m_Name: sweep12
+  m_Name: Banana3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -261,7 +261,7 @@ GameObject:
   - component: {fileID: 8670684214762996561}
   - component: {fileID: 4387090233528786175}
   m_Layer: 0
-  m_Name: Banana TrunkShape
+  m_Name: BananaBase
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

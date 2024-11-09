@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7069623748653133834}
   - component: {fileID: 6796392945382072044}
   m_Layer: 0
-  m_Name: pCube11
+  m_Name: Stones3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -95,7 +95,7 @@ GameObject:
   - component: {fileID: 395557767731620749}
   - component: {fileID: 7871860812170642598}
   m_Layer: 0
-  m_Name: pCube9
+  m_Name: Stones1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -237,7 +237,7 @@ GameObject:
   - component: {fileID: 4526121993379423360}
   - component: {fileID: 5470720467497313964}
   m_Layer: 0
-  m_Name: pCube10
+  m_Name: Stones2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -320,7 +320,7 @@ GameObject:
   - component: {fileID: 3776325376228994164}
   - component: {fileID: 7721465232494146315}
   m_Layer: 0
-  m_Name: sweep3
+  m_Name: Stick3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -403,7 +403,7 @@ GameObject:
   - component: {fileID: 6970382245534519593}
   - component: {fileID: 1708723860903046413}
   m_Layer: 0
-  m_Name: sweep2
+  m_Name: Stick2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -486,7 +486,7 @@ GameObject:
   - component: {fileID: 4822947262661108151}
   - component: {fileID: 5856166019896986872}
   m_Layer: 0
-  m_Name: sweep1
+  m_Name: Stick1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

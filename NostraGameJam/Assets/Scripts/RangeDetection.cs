@@ -24,9 +24,10 @@ public class RangeDetection : MonoBehaviour
           
             
             GameManager.instance.assignCurrentTask(gameObject.tag);
-            if (other.gameObject.CompareTag("PickAxe"))
-            {
 
+            if (other.gameObject.CompareTag("Pickaxe"))
+            {
+                Debug.Log("Hit with pickaxe");
             }
             
         }
