@@ -21,8 +21,6 @@ public class RangeDetection : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-          
-            
             GameManager.instance.assignCurrentTask(gameObject.tag);
 
             if (other.gameObject.CompareTag("Pickaxe"))
@@ -39,5 +37,11 @@ public class RangeDetection : MonoBehaviour
         {
             GameManager.instance.deleteCurrentTask();
         }
+    }
+
+    private void OnDestroy()
+    {
+        GameManager.instance.deleteCurrentTask();
+
     }
 }

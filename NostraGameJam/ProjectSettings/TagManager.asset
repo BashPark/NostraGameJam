@@ -8,6 +8,8 @@ TagManager:
   - Pickaxe
   - Berries
   - Trees
+  - PlayerHand
+  - Club
   layers:
   - Default
   - TransparentFX

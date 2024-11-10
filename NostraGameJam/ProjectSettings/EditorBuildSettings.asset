@@ -6,6 +6,6 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/LidinTestScene.unity
-    guid: ee56c0b2413a51b4fa8f557e89b64f06
+    path: Assets/Scenes/BaasilTestScene.unity
+    guid: 99c9720ab356a0642a771bea13969a05
   m_configObjects: {}
