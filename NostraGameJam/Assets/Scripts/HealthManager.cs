@@ -13,10 +13,18 @@ public class HealthManager : MonoBehaviour
 
     private float currentHealth;
 
+    [SerializeField] private Animator animator;
+
     void Start()
     {
         currentHealth = maxHealth;
         updateHealth();
+
+        // Start anim
+        if (currentHealth == maxHealth)
+        {
+            animator.SetBool("healthMax", true);
+        }
 
     }
 
@@ -39,8 +47,14 @@ public class HealthManager : MonoBehaviour
             // Check Death
             checkDeath();
 
+            // Anims
+            if (currentHealth < maxHealth)
+            {
+                animator.SetBool("healthMax", false);
+            }
+
         }
-           
+
     }
 
 
@@ -54,8 +68,13 @@ public class HealthManager : MonoBehaviour
             // Display health
             updateHealth();
 
+            // Anims
+            if (currentHealth == maxHealth)
+            {
+                animator.SetBool("healthMax", true);
+            }
         }
-        
+
     }
 
     private void updateHealth()
@@ -65,7 +84,7 @@ public class HealthManager : MonoBehaviour
 
         // Set Bar
         healthBar.fillAmount = currentHealth / maxHealth;
-        
+
         // Set text
         healthText.text = currentHealth.ToString() + " / " + maxHealth.ToString();
 

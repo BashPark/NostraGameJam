@@ -14,6 +14,7 @@ public class JobSpawnManager : MonoBehaviour
     [SerializeField] private Transform centerShrine;
 
     private List<GameObject> spawnedObjects = new List<GameObject>();
+    private int currentPrefabIndex = 0;
 
     // Property to get the current number of spawned objects
     public int CurrentSpawnedObjectsCount => spawnedObjects.Count;
@@ -50,7 +51,12 @@ public class JobSpawnManager : MonoBehaviour
                 if (IsValidSpawnPosition(spawnPos))
                 {
                     spawnSuccess = true;
-                    GameObject prefab = prefabs[Random.Range(0, prefabs.Length)];
+
+                    // Use currentPrefabIndex instead of random selection
+                    GameObject prefab = prefabs[currentPrefabIndex];
+
+                    // Increment the index, looping back to 0 if necessary
+                    currentPrefabIndex = (currentPrefabIndex + 1) % prefabs.Length;
 
                     Transform spawnPoint = prefab.transform.Find("SpawnPoint");
                     float yOffset = spawnPoint != null ? spawnPoint.localPosition.y : 0;

@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7757706686649883501}
   - component: {fileID: 6560880937020690959}
+  - component: {fileID: 8063370777249926416}
   m_Layer: 0
   m_Name: NextLevelTrigger
   m_TagString: Untagged
@@ -53,6 +54,18 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 439.8007, y: 471.12082, z: 248.51865}
   m_Center: {x: 4.369027, y: 47.83484, z: -3.8543746}
+--- !u!114 &8063370777249926416
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3274663714284748814}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d97bd5746e4bea3468bcde895bb67d5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6240257907211109060
 GameObject:
   m_ObjectHideFlags: 0
@@ -176,7 +189,7 @@ GameObject:
   - component: {fileID: 8620478784529903667}
   m_Layer: 0
   m_Name: PortalGatePrefab
-  m_TagString: Untagged
+  m_TagString: Portal
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

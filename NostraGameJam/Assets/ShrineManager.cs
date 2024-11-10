@@ -14,17 +14,23 @@ public class ShrineManager : MonoBehaviour
 
     [SerializeField] private InventoryManager inventoryManager;
     [SerializeField] private SafeZone safeZone;
+    [SerializeField] private LevelPortal levelPortal;
 
+    [SerializeField] private Animator animator;
 
     void Start()
     {
         inventoryManager = GameObject.FindWithTag("Player").GetComponent<InventoryManager>();
         safeZone = GameObject.FindWithTag("Safezone").GetComponent<SafeZone>();
+        levelPortal = GameObject.FindWithTag("Portal").GetComponent<LevelPortal>();
 
         currentShrineDepotProgress = 0;
         updateShrineDepotProgress();
 
-
+        if (currentShrineDepotProgress == 0)
+        {
+            animator.SetBool("minProg", true);
+        }
 
     }
 
@@ -41,6 +47,12 @@ public class ShrineManager : MonoBehaviour
         {
             currentShrineDepotProgress -= Amt;
             updateShrineDepotProgress();
+
+            if(currentShrineDepotProgress ==0)
+            {
+                animator.SetBool("minProg", true);
+            }
+
         }
 
     }
@@ -54,9 +66,16 @@ public class ShrineManager : MonoBehaviour
             inventoryManager.removeInventory(1f);
             
             updateShrineDepotProgress();
-            checkDone();
+            //checkDone();
 
             safeZone.increaseSafeZoneSize();
+            levelPortal.checkAndActivatePortal();
+
+            if (currentShrineDepotProgress != 0)
+            {
+                animator.SetBool("minProg", false);
+            }
+
         }
 
     }

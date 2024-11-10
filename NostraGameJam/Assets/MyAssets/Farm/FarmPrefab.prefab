@@ -512,7 +512,7 @@ GameObject:
   - component: {fileID: 4314235567468522508}
   m_Layer: 0
   m_Name: FarmPrefab
-  m_TagString: Untagged
+  m_TagString: Farm
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -586,6 +586,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   progressManager: {fileID: 1077959595638405329}
   inventoryManager: {fileID: 0}
+  hungerManager: {fileID: 0}
 --- !u!1 &6136302417082773726
 GameObject:
   m_ObjectHideFlags: 0

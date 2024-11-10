@@ -17,6 +17,7 @@ TagManager:
   - Joystick
   - Shrine
   - Safezone
+  - Portal
   layers:
   - Default
   - TransparentFX

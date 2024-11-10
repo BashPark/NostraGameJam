@@ -21,22 +21,15 @@ public class LevelPortal : MonoBehaviour
 
     private void Update()
     {
-        // Check if shrine is filled 
-
-        if(shrineManager.currentShrineDepotProgress >= shrineManager.maxShrineDepotProgress)
-        {
-            portalGate.SetActive(true);
-            gateCollider.isTrigger = true;
-
-        }
 
     }
 
-    private void OnTriggerEnter(Collider other)
+    public void checkAndActivatePortal()
     {
-        if ( other.gameObject.CompareTag("Player"))
+        if (shrineManager.currentShrineDepotProgress >= shrineManager.maxShrineDepotProgress)
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+            portalGate.SetActive(true);
+            gateCollider.isTrigger = true;
 
         }
 

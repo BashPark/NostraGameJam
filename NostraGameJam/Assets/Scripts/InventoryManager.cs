@@ -13,6 +13,7 @@ public class InventoryManager : MonoBehaviour
 
     public float currentInventory;
 
+    [SerializeField] private Animator animator;
 
     void Start()
     {
@@ -20,6 +21,12 @@ public class InventoryManager : MonoBehaviour
 
         currentInventory = 0;
         updateInventroy();
+
+        // Start anims
+        if (currentInventory == 0)
+        {
+            animator.SetBool("minInv", true);
+        }
 
     }
 
@@ -32,6 +39,12 @@ public class InventoryManager : MonoBehaviour
 
             // Display Inventory
             updateInventroy();
+
+            if ( currentInventory == 0 )
+            {
+                animator.SetBool("minInv", true);
+            }
+            
 
         }
 
@@ -46,6 +59,12 @@ public class InventoryManager : MonoBehaviour
 
             // Display Inventory
             updateInventroy();
+
+            if (currentInventory != 0)
+            {
+                animator.SetBool("minInv", false);
+            }
+
         }
     }
 

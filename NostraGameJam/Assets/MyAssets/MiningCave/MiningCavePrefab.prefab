@@ -333,7 +333,7 @@ GameObject:
   - component: {fileID: 4200002924555627233}
   m_Layer: 0
   m_Name: MiningCavePrefab
-  m_TagString: Untagged
+  m_TagString: Mine
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -407,6 +407,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   progressManager: {fileID: 8596997747324773002}
   inventoryManager: {fileID: 0}
+  hungerManager: {fileID: 0}
 --- !u!1 &5571129064088982177
 GameObject:
   m_ObjectHideFlags: 0

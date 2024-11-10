@@ -6,10 +6,12 @@ public class ProgressDetection : MonoBehaviour
 {
     [SerializeField] private ProgressManager progressManager;
     [SerializeField] private InventoryManager inventoryManager;
+    [SerializeField] private HungerManager hungerManager;
 
     private void Start()
     {
         inventoryManager = GameObject.FindGameObjectWithTag("Player").GetComponent<InventoryManager>();
+        hungerManager = GameObject.FindGameObjectWithTag("Player").GetComponent<HungerManager>();
 
     }
 
@@ -19,16 +21,32 @@ public class ProgressDetection : MonoBehaviour
         {
             // Variable to check progress
             float originalJobProgress = progressManager.currentJobProgress;
-            
+
             // Decrease Progress
             progressManager.decreaseProgress(1f);
 
-            // Check if progress has changed
-            if (originalJobProgress != progressManager.currentJobProgress )
+            if (gameObject.CompareTag("Banana") || gameObject.CompareTag("Berries") || gameObject.CompareTag("Farm"))
             {
-                inventoryManager.addInventory(1f);
+                // Check if progress has changed
+                if (originalJobProgress != progressManager.currentJobProgress)
+                {
+                    hungerManager.increaseHunger(1f);
 
+                }
             }
+            else if (gameObject.CompareTag("StickStone") || gameObject.CompareTag("Trees") || gameObject.CompareTag("Mine"))
+            {
+                // Check if progress has changed
+                if (originalJobProgress != progressManager.currentJobProgress)
+                {
+                    inventoryManager.addInventory(1f);
+
+                }
+            }
+            
+
+           
+            
 
         }
     }

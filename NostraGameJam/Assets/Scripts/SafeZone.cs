@@ -6,6 +6,8 @@ using UnityEngine;
 public class SafeZone : MonoBehaviour
 {
     [SerializeField] private HealthManager healthManager;
+    [SerializeField] private HungerManager hungerManager;
+
 
     [SerializeField] private float scaleMultiplier = 1f; // Multiplier for scaling (e.g., 1.1 will increase the scale by 10%)
     [SerializeField] private float increaseSpeed = 1f; // Speed of the scaling animation
@@ -19,6 +21,7 @@ public class SafeZone : MonoBehaviour
     private void Start()
     {
         healthManager = GameObject.FindWithTag("Player").GetComponent<HealthManager>();
+        hungerManager = GameObject.FindWithTag("Player").GetComponent<HungerManager>();
 
         // Store the original scale as the baseline
         originalScale = transform.localScale;
@@ -41,7 +44,7 @@ public class SafeZone : MonoBehaviour
 
         // Multiply the current scale by the scaleMultiplier to make the safe zone grow exponentially
         targetScale = new Vector3(targetScale.x + scaleMultiplier, originalScale.y, targetScale.z + scaleMultiplier);
-
+       
 
         //transform.localScale = targetScale;
         // Smoothly interpolate towards the target scale, affecting only x and z
@@ -88,7 +91,7 @@ public class SafeZone : MonoBehaviour
 
     IEnumerator takeSafeZoneHeal()
     {
-        while (inSafeZone)
+        while (inSafeZone && hungerManager.currentHunger > 0)
         {
             yield return new WaitForSeconds(1f);
 
