@@ -415,6 +415,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inDepotZone: 0
   inventoryManager: {fileID: 0}
+  shrineManager: {fileID: 9185285701705632927}
 --- !u!114 &9185285701705632927
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -428,10 +429,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shrineDepotBar: {fileID: 6313753226923774260}
-  maxShrineDepotProgress: 50
+  maxShrineDepotProgress: 5
   shrineDepotText: {fileID: 5518261305671105477}
   currentShrineDepotProgress: 0
   inventoryManager: {fileID: 0}
+  safeZone: {fileID: 0}
 --- !u!1 &4377267471836519504
 GameObject:
   m_ObjectHideFlags: 0
