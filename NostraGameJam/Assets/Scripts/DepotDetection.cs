@@ -13,6 +13,8 @@ public class DepotDetection : MonoBehaviour
 
     private void Start()
     {
+        inventoryManager = GameObject.FindWithTag("Player").GetComponent<InventoryManager>();
+        shrineManager = GameObject.FindWithTag("Shrine").GetComponent <ShrineManager>();
 
     }
 
@@ -40,8 +42,9 @@ public class DepotDetection : MonoBehaviour
     {
         while(inDepotZone)
         {
+           
+            
             shrineManager.increaseShrineDepotProgress(1f);
-            inventoryManager.removeInventory(1f);
 
             yield return new WaitForSeconds(1f);
         }

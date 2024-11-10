@@ -13,6 +13,8 @@ public class LevelPortal : MonoBehaviour
 
     private void Start()
     {
+
+       shrineManager= GameObject.FindWithTag("Shrine").GetComponent<ShrineManager>();
         portalGate.SetActive(false);
         gateCollider.isTrigger = false;
     }

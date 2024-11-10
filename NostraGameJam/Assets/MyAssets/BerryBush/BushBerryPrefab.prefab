@@ -134,8 +134,8 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 3.538088
-  m_Center: {x: 0.23971725, y: 1.1600101, z: -0.000002861023}
+  m_Radius: 3.7599401
+  m_Center: {x: 0.23971558, y: 2.0872335, z: -0.000002861023}
 --- !u!114 &6022539695370886690
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -153,6 +153,7 @@ MonoBehaviour:
   jobProgressText: {fileID: 8223707869934598224}
   currentJobProgress: 0
   inventoryManager: {fileID: 0}
+  jobSpawnManager: {fileID: 0}
 --- !u!114 &3977883041477777943
 MonoBehaviour:
   m_ObjectHideFlags: 0

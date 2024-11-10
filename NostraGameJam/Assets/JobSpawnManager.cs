@@ -20,6 +20,8 @@ public class JobSpawnManager : MonoBehaviour
 
     private void Start()
     {
+        player = GameObject.FindWithTag("Player").transform;
+
         // Start the spawning logic initially
         StartCoroutine(SpawnObjectsWithDelay());
     }

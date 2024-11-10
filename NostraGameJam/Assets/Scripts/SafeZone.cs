@@ -18,6 +18,8 @@ public class SafeZone : MonoBehaviour
 
     private void Start()
     {
+        healthManager = GameObject.FindWithTag("Player").GetComponent<HealthManager>();
+
         // Store the original scale as the baseline
         originalScale = transform.localScale;
 

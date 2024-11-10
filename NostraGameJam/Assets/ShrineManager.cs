@@ -18,6 +18,9 @@ public class ShrineManager : MonoBehaviour
 
     void Start()
     {
+        inventoryManager = GameObject.FindWithTag("Player").GetComponent<InventoryManager>();
+        safeZone = GameObject.FindWithTag("Safezone").GetComponent<SafeZone>();
+
         currentShrineDepotProgress = 0;
         updateShrineDepotProgress();
 
@@ -47,6 +50,9 @@ public class ShrineManager : MonoBehaviour
         if (currentShrineDepotProgress < maxShrineDepotProgress && inventoryManager.currentInventory > 0)
         {
             currentShrineDepotProgress += Amt;
+
+            inventoryManager.removeInventory(1f);
+            
             updateShrineDepotProgress();
             checkDone();
 
@@ -71,7 +77,7 @@ public class ShrineManager : MonoBehaviour
     private void checkDone()
     {
         // Check Done
-        if (currentShrineDepotProgress >= 100)
+        if (currentShrineDepotProgress >= maxShrineDepotProgress)
         {
             // Handle Done
             Debug.Log("Level up");

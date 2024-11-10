@@ -15,6 +15,11 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private Animator CavemanAnimator;
     [SerializeField] private Animator FarmerAnimator;
 
+    private void Start()
+    {
+        Joystick = GameObject.FindWithTag("Joystick").GetComponent<VariableJoystick>();
+    }
+
     private void FixedUpdate()
     {
         // Player Movement

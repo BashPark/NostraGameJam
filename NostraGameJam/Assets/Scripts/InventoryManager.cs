@@ -16,6 +16,8 @@ public class InventoryManager : MonoBehaviour
 
     void Start()
     {
+        shrineManager = GameObject.FindWithTag("Shrine").GetComponent<ShrineManager>();
+
         currentInventory = 0;
         updateInventroy();
 
@@ -23,7 +25,7 @@ public class InventoryManager : MonoBehaviour
 
     public void removeInventory(float inv)
     {
-        if(currentInventory > 0 && shrineManager.currentShrineDepotProgress < shrineManager.maxShrineDepotProgress)
+        if( currentInventory > 0 )
         {
             // Remove Inventory
             currentInventory -= inv;

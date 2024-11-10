@@ -5,13 +5,10 @@ using UnityEngine.UI;
 
 public class BarRotation : MonoBehaviour
 {
- 
-    [SerializeField] private Camera cam;
    
-
     void Update()
     {
-        transform.rotation = cam.transform.rotation;
+        transform.rotation = Camera.main.transform.rotation;
        
     }
 }

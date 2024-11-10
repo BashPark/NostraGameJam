@@ -13,6 +13,10 @@ TagManager:
   - Banana
   - Mine
   - Farm
+  - JobSpawnManager
+  - Joystick
+  - Shrine
+  - Safezone
   layers:
   - Default
   - TransparentFX
