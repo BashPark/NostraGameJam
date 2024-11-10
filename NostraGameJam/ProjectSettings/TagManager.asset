@@ -10,6 +10,9 @@ TagManager:
   - Trees
   - PlayerHand
   - Club
+  - Banana
+  - Mine
+  - Farm
   layers:
   - Default
   - TransparentFX
