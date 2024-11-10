@@ -41,7 +41,8 @@ public class RangeDetection : MonoBehaviour
 
     private void OnDestroy()
     {
-        GameManager.instance.deleteCurrentTask();
+        
+        //GameManager.instance.deleteCurrentTask();
 
     }
 }
