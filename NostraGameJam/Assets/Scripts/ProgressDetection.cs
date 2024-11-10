@@ -7,6 +7,12 @@ public class ProgressDetection : MonoBehaviour
     [SerializeField] private ProgressManager progressManager;
     [SerializeField] private InventoryManager inventoryManager;
 
+    private void Start()
+    {
+        inventoryManager = GameObject.FindGameObjectWithTag("Player").GetComponent<InventoryManager>();
+
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if(other.gameObject.CompareTag("PlayerHand") || other.gameObject.CompareTag("Pickaxe") || other.gameObject.CompareTag("Club"))

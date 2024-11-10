@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class ShrineManager : MonoBehaviour
 {
     [SerializeField] private Image shrineDepotBar;
-    [SerializeField] private float maxShrineDepotProgress;
+    public float maxShrineDepotProgress;
     [SerializeField] private TextMeshProUGUI shrineDepotText;
 
     public float currentShrineDepotProgress;

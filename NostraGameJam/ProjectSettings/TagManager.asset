@@ -10,6 +10,7 @@ TagManager:
   - Trees
   - PlayerHand
   - Club
+  - JobSpawnManager
   layers:
   - Default
   - TransparentFX

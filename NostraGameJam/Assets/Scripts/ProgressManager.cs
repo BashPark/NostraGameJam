@@ -15,13 +15,18 @@ public class ProgressManager : MonoBehaviour
     public float currentJobProgress;
 
     [SerializeField] private InventoryManager inventoryManager;
-    
+    [SerializeField] private JobSpawnManager jobSpawnManager;
+
     void Start()
     {
+        inventoryManager = GameObject.FindGameObjectWithTag("Player").GetComponent<InventoryManager>();
+        jobSpawnManager = GameObject.FindGameObjectWithTag("JobSpawnManager").GetComponent<JobSpawnManager>();
+
         currentJobProgress = 3;
         updateProgress();
 
     }
+
 
     // Update is called once per frame
     void Update()
@@ -69,6 +74,7 @@ public class ProgressManager : MonoBehaviour
         if (currentJobProgress <= 0)
         {
             // Handle Done
+            jobSpawnManager.HandleObjectCollected(gameObject);
             Destroy(gameObject);
 
         }

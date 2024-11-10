@@ -9,6 +9,7 @@ public class InventoryManager : MonoBehaviour
     [SerializeField] private Image inventoryBar;
     public float maxInventory;
     [SerializeField] private TextMeshProUGUI inventoryText;
+    [SerializeField] private ShrineManager shrineManager;
 
     public float currentInventory;
 
@@ -22,7 +23,7 @@ public class InventoryManager : MonoBehaviour
 
     public void removeInventory(float inv)
     {
-        if(currentInventory > 0)
+        if(currentInventory > 0 && shrineManager.currentShrineDepotProgress < shrineManager.maxShrineDepotProgress)
         {
             // Remove Inventory
             currentInventory -= inv;
