@@ -16,6 +16,11 @@ public class AudioManager : MonoBehaviour
     public AudioClip Level1;
     public AudioClip Level2;
     public AudioClip Level3;
+    public AudioClip menuAudio;
+    public AudioClip hoverAudio;
+    public AudioClip clickAudio;
+    public AudioClip deathAudio;
+    public AudioClip winAudio;
 
 
     private void Awake()
@@ -42,21 +47,22 @@ public class AudioManager : MonoBehaviour
 
         playAmbiance();
 
-        if (SceneManager.GetActiveScene().buildIndex == 0 || SceneManager.GetActiveScene().buildIndex == 1)
+        if (SceneManager.GetActiveScene().name == "0.0MainMenu"|| SceneManager.GetActiveScene().name == "0.2Tutorial"|| SceneManager.GetActiveScene().name == "0.5Credits")
         {
-            //AudioManager.instance.PlayMusic(Menu);
+            AudioManager.instance.PlayMusic(menuAudio);
+           
         }
-        else if (SceneManager.GetActiveScene().buildIndex == 2)
+        else if (SceneManager.GetActiveScene().name == "1Level")
         {
-            //AudioManager.instance.PlayMusic(tutLVL);
+            AudioManager.instance.PlayMusic(Level1);
         }
-        else if (SceneManager.GetActiveScene().buildIndex >= 3 && SceneManager.GetActiveScene().buildIndex <= 5)
+        else if (SceneManager.GetActiveScene().name == "2Level" )
         {
-            //AudioManager.instance.PlayMusic(normalLVL);
+            AudioManager.instance.PlayMusic(Level2);
         }
-        else if (SceneManager.GetActiveScene().buildIndex == 6)
+        else if (SceneManager.GetActiveScene().name == "3Level")
         {
-            //AudioManager.instance.PlayMusic(bossLVL);
+            AudioManager.instance.PlayMusic(Level3);
         }
         else if (SceneManager.GetActiveScene().buildIndex == 7)
         {

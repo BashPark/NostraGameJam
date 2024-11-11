@@ -1383,6 +1383,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthManager: {fileID: 0}
+  hungerManager: {fileID: 0}
   scaleMultiplier: 2
   increaseSpeed: 1
 --- !u!1 &1092931107
@@ -1784,12 +1785,13 @@ MonoBehaviour:
   musicSource: {fileID: 0}
   SFXSource: {fileID: 0}
   Ambiance: {fileID: 0}
-  tutLVL: {fileID: 0}
-  normalLVL: {fileID: 0}
-  bossLVL: {fileID: 0}
-  Menu: {fileID: 0}
-  win: {fileID: 0}
-  Cricketambiance: {fileID: 0}
+  pickupAudio: {fileID: 0}
+  woodcutAudio: {fileID: 0}
+  miningAudio: {fileID: 0}
+  Level1: {fileID: 8300000, guid: d9ddd07cc0781cf46a0cc9844483ea75, type: 3}
+  Level2: {fileID: 8300000, guid: c3f0cd27c828be84bb8004604aa463f1, type: 3}
+  Level3: {fileID: 8300000, guid: 0ebaab0410e36a946aa78e4fe5a36482, type: 3}
+  menuAudio: {fileID: 8300000, guid: 596aa64d16f1ab34e98b70d08abd4501, type: 3}
 --- !u!4 &1299540292
 Transform:
   m_ObjectHideFlags: 0
