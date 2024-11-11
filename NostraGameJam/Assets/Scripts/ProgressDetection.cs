@@ -7,17 +7,19 @@ public class ProgressDetection : MonoBehaviour
     [SerializeField] private ProgressManager progressManager;
     [SerializeField] private InventoryManager inventoryManager;
     [SerializeField] private HungerManager hungerManager;
+    [SerializeField] private Animator animator;
 
     private void Start()
     {
         inventoryManager = GameObject.FindGameObjectWithTag("Player").GetComponent<InventoryManager>();
         hungerManager = GameObject.FindGameObjectWithTag("Player").GetComponent<HungerManager>();
+        animator = GetComponent<Animator>();
 
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.CompareTag("PlayerHand") || other.gameObject.CompareTag("Pickaxe") || other.gameObject.CompareTag("Club"))
+        if (other.gameObject.CompareTag("PlayerHand") || other.gameObject.CompareTag("Pickaxe") || other.gameObject.CompareTag("Club"))
         {
             // Variable to check progress
             float originalJobProgress = progressManager.currentJobProgress;
@@ -32,6 +34,19 @@ public class ProgressDetection : MonoBehaviour
                 {
                     hungerManager.increaseHunger(1f);
 
+                    if (progressManager.currentJobProgress == 2)
+                    {
+                        animator.SetTrigger("Interact1");
+                    }
+                    else if (progressManager.currentJobProgress == 1)
+                    {
+                        animator.SetTrigger("Interact2");
+                    }
+                    else if (progressManager.currentJobProgress == 0)
+                    {
+                        animator.SetTrigger("Interact3");
+                    }
+
                 }
             }
             else if (gameObject.CompareTag("StickStone") || gameObject.CompareTag("Trees") || gameObject.CompareTag("Mine"))
@@ -41,12 +56,25 @@ public class ProgressDetection : MonoBehaviour
                 {
                     inventoryManager.addInventory(1f);
 
+                    if (progressManager.currentJobProgress == 2)
+                    {
+                        animator.SetTrigger("Interact1");
+                    }
+                    else if (progressManager.currentJobProgress == 1)
+                    {
+                        animator.SetTrigger("Interact2");
+                    }
+                    else if (progressManager.currentJobProgress == 0)
+                    {
+                        animator.SetTrigger("Interact3");
+                    }
+
                 }
             }
-            
 
-           
-            
+
+
+
 
         }
     }

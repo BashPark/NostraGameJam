@@ -209,6 +209,40 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!1 &3097894618282870731
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3787192345508495644}
+  m_Layer: 0
+  m_Name: Meshes
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3787192345508495644
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3097894618282870731}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 3797219986962089987}
+  - {fileID: 584999768182081785}
+  - {fileID: 7837369594807574384}
+  m_Father: {fileID: 4798223773024493667}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4273969859136415209
 GameObject:
   m_ObjectHideFlags: 0
@@ -240,7 +274,7 @@ Transform:
   m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 4798223773024493667}
+  m_Father: {fileID: 3787192345508495644}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &8439387017641801888
 MeshFilter:
@@ -379,6 +413,7 @@ GameObject:
   - component: {fileID: 5719186421478719054}
   - component: {fileID: 8596997747324773002}
   - component: {fileID: 4200002924555627233}
+  - component: {fileID: 5917265714799986473}
   m_Layer: 0
   m_Name: MiningCavePrefab
   m_TagString: Mine
@@ -457,6 +492,28 @@ MonoBehaviour:
   progressManager: {fileID: 8596997747324773002}
   inventoryManager: {fileID: 0}
   hungerManager: {fileID: 0}
+  animator: {fileID: 0}
+--- !u!95 &5917265714799986473
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5267011289499620593}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: dc4b3a5a66356da4bb9ca0ec48e675c3, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &5642434236819349103
 GameObject:
   m_ObjectHideFlags: 0
@@ -484,11 +541,11 @@ Transform:
   m_GameObject: {fileID: 5642434236819349103}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.4478657, y: 1.1901886, z: -2.243987}
+  m_LocalPosition: {x: 1.4478658, y: 1.1901886, z: -2.243987}
   m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 4798223773024493667}
+  m_Father: {fileID: 3787192345508495644}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &661990354674042388
 MeshFilter:
@@ -813,9 +870,7 @@ Transform:
   m_Children:
   - {fileID: 3406576595602653273}
   - {fileID: 4581861505756099326}
-  - {fileID: 3797219986962089987}
-  - {fileID: 7837369594807574384}
-  - {fileID: 584999768182081785}
+  - {fileID: 3787192345508495644}
   m_Father: {fileID: 90915415788309708}
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!1 &9141333529571487018
@@ -845,11 +900,11 @@ Transform:
   m_GameObject: {fileID: 9141333529571487018}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.64799976, y: 1.6316662, z: 0.99449724}
+  m_LocalPosition: {x: -0.6479998, y: 1.6316662, z: 0.99449724}
   m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 4798223773024493667}
+  m_Father: {fileID: 3787192345508495644}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &736504940308740999
 MeshFilter:

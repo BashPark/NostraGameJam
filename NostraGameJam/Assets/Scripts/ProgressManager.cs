@@ -9,7 +9,7 @@ using UnityEngine.UI;
 public class ProgressManager : MonoBehaviour
 {
     [SerializeField] private Image jobProgressBar;
-    [SerializeField] private float maxJobProgress;
+    public float maxJobProgress;
     [SerializeField] private TextMeshProUGUI jobProgressText;
 
     public float currentJobProgress;
