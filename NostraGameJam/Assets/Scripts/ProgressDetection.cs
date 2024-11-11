@@ -47,7 +47,11 @@ public class ProgressDetection : MonoBehaviour
                         animator.SetTrigger("Interact3");
                     }
 
+                    AudioManager.instance.PlayClip(AudioManager.instance.eatAudio,true,0.5f);
+
+
                 }
+
             }
             else if (gameObject.CompareTag("StickStone") || gameObject.CompareTag("Trees") || gameObject.CompareTag("Mine"))
             {
@@ -67,6 +71,19 @@ public class ProgressDetection : MonoBehaviour
                     else if (progressManager.currentJobProgress == 0)
                     {
                         animator.SetTrigger("Interact3");
+                    }
+
+                    if(gameObject.CompareTag("StickStone"))
+                    {
+                        AudioManager.instance.PlayClip(AudioManager.instance.pickupAudio, true, 0.5f);
+                    }
+                    else if(gameObject.CompareTag("Trees"))
+                    {
+                        AudioManager.instance.PlayClip(AudioManager.instance.woodcutAudio, true, 0.5f);
+                    }
+                    else if(gameObject.CompareTag("Mine"))
+                    {
+                        AudioManager.instance.PlayClip(AudioManager.instance.miningAudio, true, 0.5f);
                     }
 
                 }

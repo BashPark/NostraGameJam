@@ -97,6 +97,7 @@ public class HealthManager : MonoBehaviour
         // Check death
         if (currentHealth <= 0)
         {
+            AudioManager.instance.PlayClip(AudioManager.instance.deathAudio, true, 0.5f);
             // Handle death
             Destroy(gameObject);
 

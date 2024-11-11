@@ -10,7 +10,9 @@ public class NextLevelTrigger : MonoBehaviour
         Debug.Log("something collider");
         if (other.gameObject.CompareTag("Player"))
         {
+            AudioManager.instance.PlayClip(AudioManager.instance.winAudio, true, 0.5f);
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+
 
         }
 

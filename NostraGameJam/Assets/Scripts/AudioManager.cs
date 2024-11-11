@@ -13,6 +13,7 @@ public class AudioManager : MonoBehaviour
     public AudioClip pickupAudio;
     public AudioClip woodcutAudio;
     public AudioClip miningAudio;
+    public AudioClip eatAudio;
     public AudioClip Level1;
     public AudioClip Level2;
     public AudioClip Level3;
@@ -38,37 +39,33 @@ public class AudioManager : MonoBehaviour
 
         DontDestroyOnLoad(this);
 
-        Debug.Log(SceneManager.GetActiveScene().buildIndex.CompareTo(2));
+        // Ensure this script runs before any other audio script on scene load
+        SceneManager.sceneLoaded += OnSceneLoaded;
 
-        if (SceneManager.GetActiveScene().buildIndex == 2 || SceneManager.GetActiveScene().buildIndex == 3 || SceneManager.GetActiveScene().buildIndex == 6 || SceneManager.GetActiveScene().buildIndex == 7)
-        {
-            musicSource.Stop();
-        }
+    }
 
-        playAmbiance();
-
-        if (SceneManager.GetActiveScene().name == "0.0MainMenu"|| SceneManager.GetActiveScene().name == "0.2Tutorial"|| SceneManager.GetActiveScene().name == "0.5Credits")
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        // Check the scene name and play the correct music
+        if (scene.name == "0.0MainMenu" || scene.name == "0.2Tutorial" || scene.name == "0.5Credits")
         {
             AudioManager.instance.PlayMusic(menuAudio);
-           
         }
-        else if (SceneManager.GetActiveScene().name == "1Level")
+        else if (scene.name == "1Level")
         {
+            musicSource.Stop();
             AudioManager.instance.PlayMusic(Level1);
         }
-        else if (SceneManager.GetActiveScene().name == "2Level" )
+        else if (scene.name == "2Level")
         {
+            musicSource.Stop();
             AudioManager.instance.PlayMusic(Level2);
         }
-        else if (SceneManager.GetActiveScene().name == "3Level")
+        else if (scene.name == "3Level")
         {
+            musicSource.Stop();
             AudioManager.instance.PlayMusic(Level3);
         }
-        else if (SceneManager.GetActiveScene().buildIndex == 7)
-        {
-            //AudioManager.instance.PlayMusic(win);
-        }
-
     }
 
     public void PlayClip(AudioClip Clip, bool random, float vol)
@@ -114,6 +111,12 @@ public class AudioManager : MonoBehaviour
             AudioManager.instance.Ambiance.Play();
         }
 
+    }
+
+    private void OnDestroy()
+    {
+        // Unsubscribe to avoid errors if this object is destroyed
+        SceneManager.sceneLoaded -= OnSceneLoaded;
     }
 
 }
