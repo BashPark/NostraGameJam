@@ -6,9 +6,27 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/BaasilTestScene.unity
-    guid: 99c9720ab356a0642a771bea13969a05
+    path: Assets/Scenes/0.0MainMenu.unity
+    guid: 5ff899e743925974aadabee9188f2709
   - enabled: 1
-    path: Assets/Scenes/TEST.unity
-    guid: 836e70155a5009148b626a937722d7a9
+    path: Assets/Scenes/0.2Tutorial.unity
+    guid: 5e6d7dba6efec454f912ff8f79e6044e
+  - enabled: 1
+    path: Assets/Scenes/0.5Credits.unity
+    guid: 768c4ad1aee6d164db8fd85cec0fe79a
+  - enabled: 1
+    path: Assets/Scenes/0.7Death.unity
+    guid: ad5ecee93c4fa244caf02ac41f5d1834
+  - enabled: 1
+    path: Assets/Scenes/1Level.unity
+    guid: 8d8f8e20768e758469bd8a8723b40ae5
+  - enabled: 1
+    path: Assets/Scenes/2Level.unity
+    guid: 228262e712847324eb417f706156dc68
+  - enabled: 1
+    path: Assets/Scenes/3Level.unity
+    guid: 70c8106adeb76714eb875ae409ba1562
+  - enabled: 1
+    path: Assets/Scenes/0.9Win.unity
+    guid: 2bde0f3d00260864b9ff72e7e9811e8c
   m_configObjects: {}

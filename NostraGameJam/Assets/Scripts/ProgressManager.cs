@@ -77,7 +77,9 @@ public class ProgressManager : MonoBehaviour
         {
             // Handle Done
             jobSpawnManager.HandleObjectCollected(gameObject);
+
             Destroy(gameObject);
+
             GameManager.instance.deleteCurrentTask();
 
         }

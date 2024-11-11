@@ -5,8 +5,9 @@ using UnityEngine.UI;
 
 public class RangeDetection : MonoBehaviour
 {
-   
-  
+
+    [SerializeField] private Animator animator;
+
     void Start()
     {
         
@@ -23,10 +24,8 @@ public class RangeDetection : MonoBehaviour
         {
             GameManager.instance.assignCurrentTask(gameObject.tag);
 
-            if (other.gameObject.CompareTag("Pickaxe"))
-            {
-                Debug.Log("Hit with pickaxe");
-            }
+            // Anims
+            animator.SetBool("JobInteract", true);
             
         }
 
@@ -36,6 +35,9 @@ public class RangeDetection : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             GameManager.instance.deleteCurrentTask();
+
+            // Anims
+            animator.SetBool("JobInteract", false);
         }
     }
 
