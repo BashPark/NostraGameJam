@@ -12,7 +12,7 @@ public class AudioManager : MonoBehaviour
 
     public AudioClip pickupAudio;
     public AudioClip woodcutAudio;
-    public AudioClip minigAudio;
+    public AudioClip miningAudio;
     public AudioClip Level1;
     public AudioClip Level2;
     public AudioClip Level3;
