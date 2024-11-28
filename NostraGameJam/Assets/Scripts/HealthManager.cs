@@ -16,6 +16,8 @@ public class HealthManager : MonoBehaviour
 
     [SerializeField] private Animator animator;
 
+    public bool takingDamage = false;
+
     void Start()
     {
         currentHealth = maxHealth;
@@ -29,6 +31,21 @@ public class HealthManager : MonoBehaviour
 
     }
 
+    private void OnCollisionEnter(Collision collision)
+    {
+        
+
+    }
+
+    private void OnTriggerEnter(Collider collision)
+    {
+        if (collision.gameObject.CompareTag("Enemy"))
+        {
+            damageHealth(1f);
+        }
+
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -37,8 +54,11 @@ public class HealthManager : MonoBehaviour
 
     public void damageHealth(float damage)
     {
-        if (currentHealth > 0)
+        if (currentHealth > 0 && !takingDamage)
         {
+            takingDamage = true;
+            Invoke(nameof(resetTakeDamage), 5f);
+
             // Deduct health
             currentHealth -= damage;
 
@@ -58,6 +78,10 @@ public class HealthManager : MonoBehaviour
 
     }
 
+    private void resetTakeDamage()
+    {
+        takingDamage = false;
+    }
 
     public void healHealth(float heal)
     {

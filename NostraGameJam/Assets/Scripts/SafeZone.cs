@@ -18,6 +18,8 @@ public class SafeZone : MonoBehaviour
     private bool inSafeZone;
     private bool istakingSafeZoneHeal = false;
 
+    private Coroutine takeHealCoroutine;
+
 
     private void Start()
     {
@@ -45,7 +47,7 @@ public class SafeZone : MonoBehaviour
 
         // Multiply the current scale by the scaleMultiplier to make the safe zone grow exponentially
         targetScale = new Vector3(targetScale.x + scaleMultiplier, originalScale.y, targetScale.z + scaleMultiplier);
-       
+
 
         //transform.localScale = targetScale;
         // Smoothly interpolate towards the target scale, affecting only x and z
@@ -62,11 +64,20 @@ public class SafeZone : MonoBehaviour
             // Bool for coroutine while loop
             inSafeZone = true;
 
-            if(istakingSafeZoneHeal == false)
+            if (istakingSafeZoneHeal == false && !healthManager.takingDamage)
             {
-                StartCoroutine(takeSafeZoneHeal());
+                Debug.Log("couroutine started");
+                takeHealCoroutine = StartCoroutine(takeSafeZoneHeal()); 
             }
-           
+
+
+            if (takeHealCoroutine != null && healthManager.takingDamage)
+            {
+                Debug.Log("couroutine stopped");
+                StopCoroutine(takeSafeZoneHeal());
+
+            }
+
             //Debug.Log("Player has entered safe zone");
         }
     }
@@ -96,14 +107,12 @@ public class SafeZone : MonoBehaviour
 
     IEnumerator takeSafeZoneHeal()
     {
-        while (inSafeZone && hungerManager.currentHunger > 0)
+        while (inSafeZone && hungerManager.currentHunger > 0 && !healthManager.takingDamage)
         {
-            istakingSafeZoneHeal = true;
-
-            yield return new WaitForSeconds(1f);
-
             if (inSafeZone)
             {
+                istakingSafeZoneHeal = true;
+                yield return new WaitForSeconds(1f);
                 healthManager.healHealth(1f);
 
             }
@@ -114,6 +123,7 @@ public class SafeZone : MonoBehaviour
         }
 
         istakingSafeZoneHeal = false;
+        takeHealCoroutine = null;
     }
 
 }
