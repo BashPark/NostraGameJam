@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028556, g: 0.22571635, b: 0.30692515, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028556, g: 0.22571632, b: 0.30692515, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2530,6 +2530,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   agent: {fileID: 0}
   playerTransform: {fileID: 0}
+  whatIsPlayer:
+    serializedVersion: 2
+    m_Bits: 0
+  plane: {fileID: 1071142413}
+  safeZone: {fileID: 0}
+  pointRadius: 0
+  patrolSpeed: 0
+  timeBetweenAttacks: 0
+  sightRange: 0
+  AttackRange: 0
+  playerInSightRange: 0
+  playerInAttackRange: 0
 --- !u!54 &1016770954
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2914,6 +2926,12 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1058852446}
   m_CullTransparentMesh: 1
+--- !u!4 &1071142413 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2414234481258577655, guid: 5376ff3e443383f4a93612473b1bace4,
+    type: 3}
+  m_PrefabInstance: {fileID: 5179913305443273006}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1130316872
 GameObject:
   m_ObjectHideFlags: 0
