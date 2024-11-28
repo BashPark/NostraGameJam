@@ -1020,7 +1020,8 @@ GameObject:
   - component: {fileID: 5847983496451567664}
   - component: {fileID: 6944875452074571652}
   - component: {fileID: 4097272718089533071}
-  m_Layer: 0
+  - component: {fileID: 3670064482656658498}
+  m_Layer: 3
   m_Name: BananaTreePrefab
   m_TagString: Banana
   m_Icon: {fileID: 0}
@@ -1081,7 +1082,6 @@ MonoBehaviour:
   jobProgressText: {fileID: 3202334117084089141}
   currentJobProgress: 0
   inventoryManager: {fileID: 0}
-  hungerManager: {fileID: 0}
   jobSpawnManager: {fileID: 0}
 --- !u!114 &6944875452074571652
 MonoBehaviour:
@@ -1098,7 +1098,9 @@ MonoBehaviour:
   progressManager: {fileID: 5847983496451567664}
   inventoryManager: {fileID: 0}
   hungerManager: {fileID: 0}
+  playerMovement: {fileID: 0}
   animator: {fileID: 0}
+  sCollider: {fileID: 0}
 --- !u!95 &4097272718089533071
 Animator:
   serializedVersion: 5
@@ -1120,3 +1122,19 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!208 &3670064482656658498
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8966659290405852673}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 0
+  m_Extents: {x: 1.64, y: 6.14, z: 1.64}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0.19, y: 5.87, z: -0.2}
+  m_TimeToStationary: 0.5

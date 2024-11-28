@@ -96,7 +96,7 @@ GameObject:
   - component: {fileID: 8833593728117908680}
   - component: {fileID: 114008098595965518}
   - component: {fileID: 7899745860354690615}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: TreesPrefab
   m_TagString: Trees
   m_Icon: {fileID: 0}
@@ -159,7 +159,6 @@ MonoBehaviour:
   jobProgressText: {fileID: 5878098686180924695}
   currentJobProgress: 0
   inventoryManager: {fileID: 0}
-  hungerManager: {fileID: 0}
   jobSpawnManager: {fileID: 0}
 --- !u!114 &114008098595965518
 MonoBehaviour:
@@ -176,7 +175,9 @@ MonoBehaviour:
   progressManager: {fileID: 8833593728117908680}
   inventoryManager: {fileID: 0}
   hungerManager: {fileID: 0}
+  playerMovement: {fileID: 0}
   animator: {fileID: 0}
+  sCollider: {fileID: 0}
 --- !u!95 &7899745860354690615
 Animator:
   serializedVersion: 5
@@ -1297,8 +1298,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 2.7, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 1.1, y: 1.1, z: 1.1}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 6074135500938580473}
   - {fileID: 2997406842599629157}

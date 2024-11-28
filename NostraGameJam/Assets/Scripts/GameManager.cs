@@ -25,16 +25,20 @@ public class GameManager : MonoBehaviour
     {
         currentTask = task;
         attackPanel.SetActive(true);
-        print(currentTask);
+      
     }
     public void deleteCurrentTask()
     {
         currentTask=null;
         attackPanel.SetActive(false);
-        print(currentTask);
+       
     }
     void Start()
     {
+        // Limit framerate to cinematic 24fps.
+        QualitySettings.vSyncCount = 0; // Set vSyncCount to 0 so that using .targetFrameRate is enabled.
+        Application.targetFrameRate = 60;
+
     }
 
    

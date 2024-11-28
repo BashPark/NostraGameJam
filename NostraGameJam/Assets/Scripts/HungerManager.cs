@@ -18,6 +18,8 @@ public class HungerManager : MonoBehaviour
     [SerializeField] private HealthManager healthManager;
     [SerializeField] private Animator animator;
 
+    private bool isDecreasingHungerOverTime = false;
+
     void Start()
     {
         healthManager = GameObject.FindWithTag("Player").GetComponent<HealthManager>();
@@ -25,8 +27,6 @@ public class HungerManager : MonoBehaviour
         currentHunger = maxHunger;
         updateHunger();
 
-        // Start the automatic hunger decrease coroutine
-        StartCoroutine(DecreaseHungerOverTime());
 
         // Start Anims
         if (currentHunger == maxHunger)
@@ -39,6 +39,12 @@ public class HungerManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if ( currentHunger > 0 && isDecreasingHungerOverTime == false)
+        {
+            // Start the automatic hunger decrease coroutine
+            StartCoroutine(DecreaseHungerOverTime());
+        }
+      
 
     }
 
@@ -104,9 +110,12 @@ public class HungerManager : MonoBehaviour
     {
         while (currentHunger > 0)
         {
+            isDecreasingHungerOverTime = true;
             yield return new WaitForSeconds(hungerDecreaseInterval);
             reduceHunger(hungerDecreaseAmount);
         }
+
+        isDecreasingHungerOverTime = false;
     }
 
 

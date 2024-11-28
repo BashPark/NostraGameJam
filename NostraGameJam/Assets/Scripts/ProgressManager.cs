@@ -15,14 +15,12 @@ public class ProgressManager : MonoBehaviour
     public float currentJobProgress;
 
     [SerializeField] private InventoryManager inventoryManager;
-    [SerializeField] private HungerManager hungerManager;
     [SerializeField] private JobSpawnManager jobSpawnManager;
 
     void Start()
     {
         inventoryManager = GameObject.FindGameObjectWithTag("Player").GetComponent<InventoryManager>();
         jobSpawnManager = GameObject.FindGameObjectWithTag("JobSpawnManager").GetComponent<JobSpawnManager>();
-        hungerManager = GameObject.FindGameObjectWithTag("Player").GetComponent<HungerManager>();
 
         currentJobProgress = 3;
         updateProgress();
@@ -36,10 +34,10 @@ public class ProgressManager : MonoBehaviour
      
     }
 
-    public void decreaseProgress(float decreaseAmt) {
-        if (currentJobProgress > 0 && inventoryManager.currentInventory != inventoryManager.maxInventory && hungerManager.currentHunger != hungerManager.maxHunger)
+    public void decreaseProgress() {
+        if (currentJobProgress > 0)
         {
-            currentJobProgress -= decreaseAmt;
+            currentJobProgress -= 1;
             updateProgress();
             checkDone();
         }

@@ -16,6 +16,7 @@ public class SafeZone : MonoBehaviour
     private Vector3 targetScale;
 
     private bool inSafeZone;
+    private bool istakingSafeZoneHeal = false;
 
 
     private void Start()
@@ -54,14 +55,18 @@ public class SafeZone : MonoBehaviour
         //targetScale = new Vector3(targetScale.x + scaleMultiplier, originalScale.y, targetScale.z + scaleMultiplier);
     }
 
-    private void OnTriggerEnter(Collider collision)
+    private void OnTriggerStay(Collider collision)
     {
         if (collision.gameObject.CompareTag("Player"))
         {
             // Bool for coroutine while loop
             inSafeZone = true;
 
-            StartCoroutine(takeSafeZoneHeal());
+            if(istakingSafeZoneHeal == false)
+            {
+                StartCoroutine(takeSafeZoneHeal());
+            }
+           
             //Debug.Log("Player has entered safe zone");
         }
     }
@@ -93,6 +98,8 @@ public class SafeZone : MonoBehaviour
     {
         while (inSafeZone && hungerManager.currentHunger > 0)
         {
+            istakingSafeZoneHeal = true;
+
             yield return new WaitForSeconds(1f);
 
             if (inSafeZone)
@@ -106,6 +113,7 @@ public class SafeZone : MonoBehaviour
 
         }
 
+        istakingSafeZoneHeal = false;
     }
 
 }

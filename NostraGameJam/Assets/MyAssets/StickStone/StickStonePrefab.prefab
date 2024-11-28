@@ -676,7 +676,8 @@ GameObject:
   - component: {fileID: 6511142911770978534}
   - component: {fileID: 4184165543988442753}
   - component: {fileID: 6127750683452554961}
-  m_Layer: 0
+  - component: {fileID: 6613194478102675092}
+  m_Layer: 3
   m_Name: StickStonePrefab
   m_TagString: StickStone
   m_Icon: {fileID: 0}
@@ -737,7 +738,6 @@ MonoBehaviour:
   jobProgressText: {fileID: 6027986652558323967}
   currentJobProgress: 0
   inventoryManager: {fileID: 0}
-  hungerManager: {fileID: 0}
   jobSpawnManager: {fileID: 0}
 --- !u!114 &4184165543988442753
 MonoBehaviour:
@@ -754,7 +754,9 @@ MonoBehaviour:
   progressManager: {fileID: 6511142911770978534}
   inventoryManager: {fileID: 0}
   hungerManager: {fileID: 0}
+  playerMovement: {fileID: 0}
   animator: {fileID: 0}
+  sCollider: {fileID: 0}
 --- !u!95 &6127750683452554961
 Animator:
   serializedVersion: 5
@@ -776,6 +778,22 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!208 &6613194478102675092
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4740165790144697096}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 0
+  m_Extents: {x: 5.73, y: 5.175, z: 5.73}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0.28, y: 3.48, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1 &5314253080163699187
 GameObject:
   m_ObjectHideFlags: 0

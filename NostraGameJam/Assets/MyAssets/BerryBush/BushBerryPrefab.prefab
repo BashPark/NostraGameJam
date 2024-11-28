@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 6022539695370886690}
   - component: {fileID: 3977883041477777943}
   - component: {fileID: 5088931305550507174}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: BushBerryPrefab
   m_TagString: Berries
   m_Icon: {fileID: 0}
@@ -76,7 +76,6 @@ MonoBehaviour:
   jobProgressText: {fileID: 2026018136980572610}
   currentJobProgress: 0
   inventoryManager: {fileID: 0}
-  hungerManager: {fileID: 0}
   jobSpawnManager: {fileID: 0}
 --- !u!114 &3977883041477777943
 MonoBehaviour:
@@ -93,7 +92,9 @@ MonoBehaviour:
   progressManager: {fileID: 6022539695370886690}
   inventoryManager: {fileID: 0}
   hungerManager: {fileID: 0}
+  playerMovement: {fileID: 0}
   animator: {fileID: 0}
+  sCollider: {fileID: 0}
 --- !u!95 &5088931305550507174
 Animator:
   serializedVersion: 5

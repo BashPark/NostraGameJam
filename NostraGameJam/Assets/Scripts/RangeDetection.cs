@@ -30,6 +30,7 @@ public class RangeDetection : MonoBehaviour
         }
 
     }
+
     private void OnTriggerExit(Collider other)
     {
         if (other.gameObject.CompareTag("Player"))

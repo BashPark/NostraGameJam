@@ -187,8 +187,8 @@ Transform:
   m_GameObject: {fileID: 965555293758121659}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -0.6319134}
-  m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
+  m_LocalPosition: {x: 0.0035177, y: 0, z: -0.6319134}
+  m_LocalScale: {x: 0.0061782002, y: 0.01, z: 0.01}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3234758413255688425}
@@ -270,7 +270,7 @@ Transform:
   m_GameObject: {fileID: 1646043746819484230}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 4.68, y: 0.87242985, z: -0.78432393}
+  m_LocalPosition: {x: 2.67, y: 0.87242985, z: -0.78432393}
   m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -720,7 +720,7 @@ GameObject:
   - component: {fileID: 1077959595638405329}
   - component: {fileID: 4314235567468522508}
   - component: {fileID: 514771585189315788}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: FarmPrefab
   m_TagString: Farm
   m_Icon: {fileID: 0}
@@ -762,8 +762,8 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 7.0592923
-  m_Center: {x: -0.027647365, y: 2.4447517, z: -0.23329288}
+  m_Radius: 4.9675155
+  m_Center: {x: -0.027647365, y: 2.6656232, z: -0.23329288}
 --- !u!114 &1077959595638405329
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -781,7 +781,6 @@ MonoBehaviour:
   jobProgressText: {fileID: 4176835103018881954}
   currentJobProgress: 0
   inventoryManager: {fileID: 0}
-  hungerManager: {fileID: 0}
   jobSpawnManager: {fileID: 0}
 --- !u!114 &4314235567468522508
 MonoBehaviour:
@@ -798,7 +797,9 @@ MonoBehaviour:
   progressManager: {fileID: 1077959595638405329}
   inventoryManager: {fileID: 0}
   hungerManager: {fileID: 0}
+  playerMovement: {fileID: 0}
   animator: {fileID: 0}
+  sCollider: {fileID: 0}
 --- !u!95 &514771585189315788
 Animator:
   serializedVersion: 5
@@ -956,7 +957,7 @@ Transform:
   m_GameObject: {fileID: 7800603593763934507}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -5.140245, y: 0.87242985, z: -0.78432393}
+  m_LocalPosition: {x: -3.02, y: 0.87242985, z: -0.78432393}
   m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
   m_ConstrainProportionsScale: 0
   m_Children: []

@@ -489,7 +489,7 @@ GameObject:
   - component: {fileID: 8596997747324773002}
   - component: {fileID: 4200002924555627233}
   - component: {fileID: 5917265714799986473}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: MiningCavePrefab
   m_TagString: Mine
   m_Icon: {fileID: 0}
@@ -550,7 +550,6 @@ MonoBehaviour:
   jobProgressText: {fileID: 8745089905065217020}
   currentJobProgress: 0
   inventoryManager: {fileID: 0}
-  hungerManager: {fileID: 0}
   jobSpawnManager: {fileID: 0}
 --- !u!114 &4200002924555627233
 MonoBehaviour:
@@ -567,7 +566,9 @@ MonoBehaviour:
   progressManager: {fileID: 8596997747324773002}
   inventoryManager: {fileID: 0}
   hungerManager: {fileID: 0}
+  playerMovement: {fileID: 0}
   animator: {fileID: 0}
+  sCollider: {fileID: 0}
 --- !u!95 &5917265714799986473
 Animator:
   serializedVersion: 5
