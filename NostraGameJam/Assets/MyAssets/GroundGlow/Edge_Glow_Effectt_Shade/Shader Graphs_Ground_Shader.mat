@@ -51,11 +51,11 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _Glow_Amount: 4
+    - _Glow_Amount: 3.8
     - _QueueControl: 0
     - _QueueOffset: 0
     - _Scale: 1.03
     m_Colors:
     - _Edge_Colour: {r: 0, g: 0, b: 0, a: 0}
-    - _Glow_Color: {r: 0, g: 15.656339, b: 23.689085, a: 1}
+    - _Glow_Color: {r: 0, g: 11.8445425, b: 9.744921, a: 1}
   m_BuildTextureStacks: []

@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class InventoryManager : MonoBehaviour
 {
-    [SerializeField] private Image inventoryBar;
+    public Image inventoryBar;
     public float maxInventory;
     [SerializeField] private TextMeshProUGUI inventoryText;
     [SerializeField] private ShrineManager shrineManager;
@@ -14,6 +14,9 @@ public class InventoryManager : MonoBehaviour
     public float currentInventory;
 
     [SerializeField] private Animator animator;
+
+    private Color originalColor;
+
 
     void Start()
     {
@@ -28,6 +31,7 @@ public class InventoryManager : MonoBehaviour
             animator.SetBool("minInv", true);
         }
 
+        originalColor = inventoryBar.color;
     }
 
     public void removeInventory(float inv)
@@ -79,6 +83,11 @@ public class InventoryManager : MonoBehaviour
         // Set Text
         inventoryText.text = currentInventory.ToString() + " / " + maxInventory.ToString();
 
+    }
+
+    public void resetColor()
+    {
+        inventoryBar.color = originalColor;
     }
 
 }

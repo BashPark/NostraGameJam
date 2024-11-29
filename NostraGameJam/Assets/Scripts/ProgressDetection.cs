@@ -66,6 +66,12 @@ public class ProgressDetection : MonoBehaviour
                     //}
 
                 }
+                else
+                {
+                    hungerManager.hungerBar.color = Color.gray;
+                    hungerManager.Invoke(nameof(hungerManager.resetColor), 1f);
+                }
+
             }
             else if (playerMovement.hit.transform.CompareTag("StickStone") || playerMovement.hit.transform.CompareTag("Trees") || playerMovement.hit.transform.CompareTag("Mine"))
             {
@@ -110,89 +116,96 @@ public class ProgressDetection : MonoBehaviour
 
                     //}
                 }
+                else
+                {
+                    inventoryManager.inventoryBar.color = Color.gray;
+                    inventoryManager.Invoke(nameof(hungerManager.resetColor), 1f);
+                }
+
             }
+           
 
             playerMovement.isActioning = false;
         }
         
     }
-        //private void OnTriggerEnter(Collider other)
-        //{
-        //    if (other.gameObject.CompareTag("PlayerHand") || other.gameObject.CompareTag("Pickaxe") || other.gameObject.CompareTag("Club"))
-        //    {
+    //private void OnTriggerEnter(Collider other)
+    //{
+    //    if (other.gameObject.CompareTag("PlayerHand") || other.gameObject.CompareTag("Pickaxe") || other.gameObject.CompareTag("Club"))
+    //    {
 
-        //        if ((gameObject.CompareTag("Banana") || gameObject.CompareTag("Berries") || gameObject.CompareTag("Farm")) && hungerManager.currentHunger != hungerManager.maxHunger)
-        //        {
-        //            // Decrease Hunger
-        //            progressManager.decreaseProgress(1f);
+    //        if ((gameObject.CompareTag("Banana") || gameObject.CompareTag("Berries") || gameObject.CompareTag("Farm")) && hungerManager.currentHunger != hungerManager.maxHunger)
+    //        {
+    //            // Decrease Hunger
+    //            progressManager.decreaseProgress(1f);
 
-        //            // Check if progress has changed
-        //            if (originalJobProgress != progressManager.currentJobProgress)
-        //            {
-        //                hungerManager.increaseHunger(1f);
+    //            // Check if progress has changed
+    //            if (originalJobProgress != progressManager.currentJobProgress)
+    //            {
+    //                hungerManager.increaseHunger(1f);
 
-        //                if (progressManager.currentJobProgress == 2)
-        //                {
-        //                    animator.SetTrigger("Interact1");
-        //                }
-        //                else if (progressManager.currentJobProgress == 1)
-        //                {
-        //                    animator.SetTrigger("Interact2");
-        //                }
-        //                else if (progressManager.currentJobProgress == 0)
-        //                {
-        //                    animator.SetTrigger("Interact3");
-        //                }
+    //                if (progressManager.currentJobProgress == 2)
+    //                {
+    //                    animator.SetTrigger("Interact1");
+    //                }
+    //                else if (progressManager.currentJobProgress == 1)
+    //                {
+    //                    animator.SetTrigger("Interact2");
+    //                }
+    //                else if (progressManager.currentJobProgress == 0)
+    //                {
+    //                    animator.SetTrigger("Interact3");
+    //                }
 
-        //                AudioManager.instance.PlayClip(AudioManager.instance.eatAudio, true, 0.5f);
-
-
-        //            }
-
-        //        }
-        //        else if (gameObject.CompareTag("StickStone") || gameObject.CompareTag("Trees") || gameObject.CompareTag("Mine"))
-        //        {
-        //            // Decrease Progress
-        //            progressManager.decreaseProgress(1f);
-
-        //            // Check if progress has changed
-        //            if (originalJobProgress != progressManager.currentJobProgress)
-        //            {
-        //                inventoryManager.addInventory(1f);
-
-        //                if (progressManager.currentJobProgress == 2)
-        //                {
-        //                    animator.SetTrigger("Interact1");
-        //                }
-        //                else if (progressManager.currentJobProgress == 1)
-        //                {
-        //                    animator.SetTrigger("Interact2");
-        //                }
-        //                else if (progressManager.currentJobProgress == 0)
-        //                {
-        //                    animator.SetTrigger("Interact3");
-        //                }
-
-        //                if (gameObject.CompareTag("StickStone"))
-        //                {
-        //                    AudioManager.instance.PlayClip(AudioManager.instance.pickupAudio, true, 0.5f);
-        //                }
-        //                else if (gameObject.CompareTag("Trees"))
-        //                {
-        //                    AudioManager.instance.PlayClip(AudioManager.instance.woodcutAudio, true, 0.5f);
-        //                }
-        //                else if (gameObject.CompareTag("Mine"))
-        //                {
-        //                    AudioManager.instance.PlayClip(AudioManager.instance.miningAudio, true, 0.5f);
-        //                }
-
-        //            }
-        //        }
+    //                AudioManager.instance.PlayClip(AudioManager.instance.eatAudio, true, 0.5f);
 
 
+    //            }
+
+    //        }
+    //        else if (gameObject.CompareTag("StickStone") || gameObject.CompareTag("Trees") || gameObject.CompareTag("Mine"))
+    //        {
+    //            // Decrease Progress
+    //            progressManager.decreaseProgress(1f);
+
+    //            // Check if progress has changed
+    //            if (originalJobProgress != progressManager.currentJobProgress)
+    //            {
+    //                inventoryManager.addInventory(1f);
+
+    //                if (progressManager.currentJobProgress == 2)
+    //                {
+    //                    animator.SetTrigger("Interact1");
+    //                }
+    //                else if (progressManager.currentJobProgress == 1)
+    //                {
+    //                    animator.SetTrigger("Interact2");
+    //                }
+    //                else if (progressManager.currentJobProgress == 0)
+    //                {
+    //                    animator.SetTrigger("Interact3");
+    //                }
+
+    //                if (gameObject.CompareTag("StickStone"))
+    //                {
+    //                    AudioManager.instance.PlayClip(AudioManager.instance.pickupAudio, true, 0.5f);
+    //                }
+    //                else if (gameObject.CompareTag("Trees"))
+    //                {
+    //                    AudioManager.instance.PlayClip(AudioManager.instance.woodcutAudio, true, 0.5f);
+    //                }
+    //                else if (gameObject.CompareTag("Mine"))
+    //                {
+    //                    AudioManager.instance.PlayClip(AudioManager.instance.miningAudio, true, 0.5f);
+    //                }
+
+    //            }
+    //        }
 
 
 
-        //    }
-        //}
-    }
+
+
+    //    }
+    //}
+}

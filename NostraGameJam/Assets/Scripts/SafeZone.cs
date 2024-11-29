@@ -16,9 +16,11 @@ public class SafeZone : MonoBehaviour
     private Vector3 targetScale;
 
     private bool inSafeZone;
-    private bool istakingSafeZoneHeal = false;
+    //private bool istakingSafeZoneHeal = false;
 
-    private Coroutine takeHealCoroutine;
+    //private Coroutine takeHealCoroutine;
+    public float lastSafeZoneHealedTime;
+    public float lastSafeZoneDamagedTime;
 
 
     private void Start()
@@ -32,6 +34,8 @@ public class SafeZone : MonoBehaviour
         // Initialize currentScale and targetScale to the original scale
         targetScale = originalScale;
 
+        lastSafeZoneHealedTime = Time.time;
+        lastSafeZoneDamagedTime = Time.time;
 
     }
 
@@ -48,82 +52,59 @@ public class SafeZone : MonoBehaviour
         // Multiply the current scale by the scaleMultiplier to make the safe zone grow exponentially
         targetScale = new Vector3(targetScale.x + scaleMultiplier, originalScale.y, targetScale.z + scaleMultiplier);
 
-
-        //transform.localScale = targetScale;
-        // Smoothly interpolate towards the target scale, affecting only x and z
-        //transform.localScale = Vector3.Lerp(transform.localScale, targetScale, increaseSpeed * Time.deltaTime);
-
-        // Multiply the current scale by the scaleMultiplier to make the safe zone grow
-        //targetScale = new Vector3(targetScale.x + scaleMultiplier, originalScale.y, targetScale.z + scaleMultiplier);
     }
 
-    private void OnTriggerStay(Collider collision)
+    private void OnTriggerEnter(Collider collision)
     {
-        if (collision.gameObject.CompareTag("Player"))
+        if(collision.gameObject.CompareTag("Player"))
         {
-            // Bool for coroutine while loop
             inSafeZone = true;
-
-            if (istakingSafeZoneHeal == false && !healthManager.takingDamage)
-            {
-                Debug.Log("couroutine started");
-                takeHealCoroutine = StartCoroutine(takeSafeZoneHeal()); 
-            }
-
-
-            if (takeHealCoroutine != null && healthManager.takingDamage)
-            {
-                Debug.Log("couroutine stopped");
-                StopCoroutine(takeSafeZoneHeal());
-
-            }
-
-            //Debug.Log("Player has entered safe zone");
+            Debug.Log("Entered safe zone");
         }
-    }
 
+    }
     private void OnTriggerExit(Collider collision)
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            // Bool for coroutine while loop
             inSafeZone = false;
-
-            StartCoroutine(takeDangerZoneDamage());
-            //Debug.Log("Player has exited safe zone");
+            Debug.Log("Exited safe zone");
         }
     }
 
-    IEnumerator takeDangerZoneDamage()
+    private void FixedUpdate()
     {
-        while (!inSafeZone)
+        // Heal or Damage Player
+        if (inSafeZone)
         {
+            TakeDangerZoneHeal();
+        }
+        else if (!inSafeZone)
+        {
+            TakeSafeZoneDamage();
+        }
+
+    }
+
+    private void TakeDangerZoneHeal()
+    {
+        // Heal if enough time has passed
+        if (Time.time >= lastSafeZoneHealedTime + 2f && Time.time >= healthManager.lastDamagedTime + 2f && hungerManager.currentHunger > 0)
+        {
+            lastSafeZoneHealedTime = Time.time;
+            healthManager.healHealth(1f);
+        }
+    }
+
+    private void TakeSafeZoneDamage()
+    {
+        // Damage if enough time has passed
+        if (Time.time >= lastSafeZoneDamagedTime + 2f)
+        {
+            lastSafeZoneDamagedTime = Time.time;
             healthManager.damageHealth(1f);
-            yield return new WaitForSeconds(1f);
-
         }
-
     }
 
-    IEnumerator takeSafeZoneHeal()
-    {
-        while (inSafeZone && hungerManager.currentHunger > 0 && !healthManager.takingDamage)
-        {
-            if (inSafeZone)
-            {
-                istakingSafeZoneHeal = true;
-                yield return new WaitForSeconds(1f);
-                healthManager.healHealth(1f);
-
-            }
-
-            //healthManager.healHealth(1f);
-            //yield return new WaitForSeconds(1f);
-
-        }
-
-        istakingSafeZoneHeal = false;
-        takeHealCoroutine = null;
-    }
 
 }

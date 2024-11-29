@@ -19,6 +19,8 @@ TagManager:
   - Safezone
   - Portal
   - Enemy
+  - WalkableArea
+  - EnemySpawnManager
   layers:
   - Default
   - TransparentFX

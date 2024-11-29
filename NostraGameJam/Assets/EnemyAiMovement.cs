@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using static UnityEditor.FilePathAttribute;
 
 public class EnemyAiMovement : MonoBehaviour
 {
     [SerializeField] private NavMeshAgent agent;
-    [SerializeField] private Rigidbody enemyRB;
     [SerializeField] private Transform playerTransform;
     public LayerMask whatIsPlayer;
 
@@ -33,36 +33,51 @@ public class EnemyAiMovement : MonoBehaviour
     [SerializeField] private Animator bearAnimator;
     [SerializeField] private Animator wolfAnimator;
 
+    // Knockback
+    [SerializeField] private float knockbackForce = 5f; // Adjust the force as needed
+
 
     // Start is called before the first frame update
     void Start()
     {
         playerTransform = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
+        plane = GameObject.FindGameObjectWithTag("WalkableArea");
+        safeZone = GameObject.FindGameObjectWithTag("Safezone").GetComponent<BoxCollider>();
+
+        targetPoint = new Vector3(20, 0, 20);
+    }
+
+    private void Awake()
+    {
         agent = GetComponent<NavMeshAgent>();
-        enemyRB = GetComponent<Rigidbody>();
-        setNewPatrolPoint();
-       
     }
 
     // Update is called once per frame
     void Update()
     {
-        playerInSightRange = Physics.CheckSphere(transform.position, sightRange,whatIsPlayer);
-        playerInAttackRange= Physics.CheckSphere(transform.position, AttackRange, whatIsPlayer);
+        playerInSightRange = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer);
+        playerInAttackRange = Physics.CheckSphere(transform.position, AttackRange, whatIsPlayer);
 
         if (!playerInSightRange && !playerInAttackRange) patroling();
-        if (playerInSightRange && !playerInAttackRange) chasePlayer();
-        if (playerInAttackRange && playerInSightRange) attackPlayer();
-         
+        else if (playerInSightRange && !playerInAttackRange) chasePlayer();
+        else if (playerInAttackRange && playerInSightRange) attackPlayer();
+
+
     }
+
     private void patroling()
     {
         agent.speed = patrolSpeed;
 
-        agent.SetDestination(targetPoint);
+        if(agent.isOnNavMesh)
+        {
+       
+            agent.SetDestination(targetPoint);
+
+        }
 
 
-        if(Vector3.Distance(transform.position, targetPoint) < 0.5f)
+        if (Vector3.Distance(transform.position, targetPoint) < 0.5f)
         {
             setNewPatrolPoint();
         }
@@ -71,7 +86,7 @@ public class EnemyAiMovement : MonoBehaviour
         // For Tiger
         if (tigerAnimator.gameObject.activeInHierarchy)
         {
-            tigerAnimator.SetBool("walk",true);
+            tigerAnimator.SetBool("walk", true);
             tigerAnimator.SetBool("run", false);
 
         }
@@ -98,8 +113,8 @@ public class EnemyAiMovement : MonoBehaviour
         agent.speed = chaseSpeed;
 
         agent.SetDestination(playerTransform.position);
-        
-        
+
+
         //animations
         // For Tiger
         if (tigerAnimator.gameObject.activeInHierarchy)
@@ -131,7 +146,16 @@ public class EnemyAiMovement : MonoBehaviour
     {
         // Stop in place and look at player
         agent.SetDestination(playerTransform.position);
-        transform.LookAt(playerTransform);
+
+        // Get the player's position
+        Vector3 targetPosition = playerTransform.position;
+
+        // Keep the current object's Y position to ignore vertical rotation
+        targetPosition.y = transform.position.y;
+
+        // Rotate the object to look at the adjusted position
+        transform.LookAt(targetPosition);
+
         agent.speed = 0f;
         agent.velocity = Vector3.zero;
 
@@ -171,7 +195,7 @@ public class EnemyAiMovement : MonoBehaviour
     }
     private void resetAttack()
     {
-        alreadyAttacked=false;
+        alreadyAttacked = false;
 
     }
 
@@ -181,7 +205,7 @@ public class EnemyAiMovement : MonoBehaviour
         do
         {
             randomPoint = getRandomPointOnPlane();
-        }while(isInsideSafeZone(randomPoint) && !isNotSafeZone(randomPoint));
+        } while (isInsideSafeZone(randomPoint) && !isNotSafeZone(randomPoint));
 
         targetPoint = randomPoint;
     }
@@ -189,10 +213,10 @@ public class EnemyAiMovement : MonoBehaviour
     private Vector3 getRandomPointOnPlane()
     {
         
-        float randomX=Random.Range(transform.position.x-pointRadius, transform.position.x+pointRadius);
-        float randomZ=Random.Range(transform.position.z-pointRadius, transform.position.z+pointRadius);
+        float randomX = Random.Range(plane.transform.position.x - pointRadius, plane.transform.position.x + pointRadius);
+        float randomZ = Random.Range(plane.transform.position.z - pointRadius, plane.transform.position.z + pointRadius);
 
-        return new Vector3(randomX,0, randomZ);
+        return new Vector3(randomX, 0, randomZ);
     }
     private bool isInsideSafeZone(Vector3 point)
     {
@@ -203,14 +227,31 @@ public class EnemyAiMovement : MonoBehaviour
         return plane.GetComponent<MeshRenderer>().bounds.Contains(point);
     }
 
+    // Call this function when the enemy is hit
+    public void ApplyKnockback()
+    {
+        // Calculate the knockback direction (opposite of forward)
+        Vector3 knockbackDirection = -transform.forward.normalized;
+
+        // Calculate the target position for the knockback
+        Vector3 knockbackTarget = transform.position + knockbackDirection * knockbackForce;
+
+        // Instantly move the enemy to the knockback target
+        transform.position = Vector3.MoveTowards(transform.position, knockbackTarget, 200 * Time.deltaTime);
+
+
+
+
+    }
+
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.blue;
         Gizmos.DrawSphere(targetPoint, 2f);
 
-        if(safeZone != null)
+        if (safeZone != null)
         {
-            Gizmos.color= Color.cyan;
+            Gizmos.color = Color.cyan;
             Gizmos.DrawWireCube(safeZone.bounds.center, safeZone.bounds.size);
         }
 

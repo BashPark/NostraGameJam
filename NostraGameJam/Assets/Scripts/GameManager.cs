@@ -30,7 +30,7 @@ public class GameManager : MonoBehaviour
     public void deleteCurrentTask()
     {
         currentTask=null;
-        attackPanel.SetActive(false);
+        //attackPanel.SetActive(false);
        
     }
     void Start()

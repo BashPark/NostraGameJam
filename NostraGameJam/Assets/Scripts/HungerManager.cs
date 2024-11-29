@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class HungerManager : MonoBehaviour
 {
-    [SerializeField] private Image hungerBar;
+    public Image hungerBar;
     public float maxHunger;
     [SerializeField] private TextMeshProUGUI hungerText;
 
@@ -19,6 +19,8 @@ public class HungerManager : MonoBehaviour
     [SerializeField] private Animator animator;
 
     private bool isDecreasingHungerOverTime = false;
+
+    private Color originalColor;
 
     void Start()
     {
@@ -33,6 +35,8 @@ public class HungerManager : MonoBehaviour
         {
             animator.SetBool("maxHunger", true);
         }
+
+        originalColor = hungerBar.color;
 
     }
 
@@ -132,6 +136,9 @@ public class HungerManager : MonoBehaviour
 
     }
 
-    
+    public void resetColor()
+    {
+        hungerBar.color = originalColor;
+    }
 
 }

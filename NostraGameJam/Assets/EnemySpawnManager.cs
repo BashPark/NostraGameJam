@@ -1,17 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Security.Cryptography.X509Certificates;
 using UnityEngine;
 
-public class JobSpawnManager : MonoBehaviour
+public class EnemySpawnManager : MonoBehaviour
 {
-    [SerializeField] private GameObject[] prefabs;
+    [SerializeField] private GameObject[] Enemyprefabs;
     [SerializeField] private Transform spawnZone;
-    public int maxObjects = 3;
+    public int maxEnemies = 3;
     [SerializeField] private float minDistance = 2f;
     [SerializeField] private float spawnDelay = 5f; // Delay between spawn attempts
-    [SerializeField] private Transform player;
-    [SerializeField] private Transform centerShrine;
+    [SerializeField] private Transform SafeZone;
 
     private List<GameObject> spawnedObjects = new List<GameObject>();
     private int currentPrefabIndex = 0;
@@ -21,7 +19,7 @@ public class JobSpawnManager : MonoBehaviour
 
     private void Start()
     {
-        player = GameObject.FindWithTag("Player").transform;
+        SafeZone = GameObject.FindWithTag("Safezone").transform;
 
         // Start the spawning logic initially
         StartCoroutine(SpawnObjectsWithDelay());
@@ -34,13 +32,12 @@ public class JobSpawnManager : MonoBehaviour
             // Wait until the required delay before spawning
             yield return new WaitForSeconds(spawnDelay);
             // Check and spawn new objects if necessary
-            SpawnObject();
+            SpawnEnemies();
         }
     }
-
-    public void SpawnObject()
+    public void SpawnEnemies()
     {
-        if (spawnedObjects.Count < maxObjects)
+        if (spawnedObjects.Count < maxEnemies)
         {
             bool spawnSuccess = false;
             int attempts = 0;
@@ -53,10 +50,10 @@ public class JobSpawnManager : MonoBehaviour
                     spawnSuccess = true;
 
                     // Use currentPrefabIndex instead of random selection
-                    GameObject prefab = prefabs[currentPrefabIndex];
+                    GameObject prefab = Enemyprefabs[currentPrefabIndex];
 
                     // Increment the index, looping back to 0 if necessary
-                    currentPrefabIndex = (currentPrefabIndex + 1) % prefabs.Length;
+                    currentPrefabIndex = (currentPrefabIndex + 1) % Enemyprefabs.Length;
 
                     Transform spawnPoint = prefab.transform.Find("SpawnPoint");
                     float yOffset = spawnPoint != null ? spawnPoint.localPosition.y : 0;
@@ -74,7 +71,7 @@ public class JobSpawnManager : MonoBehaviour
 
     private Vector3 GetRandomSpawnPosition()
     {
-        Bounds zoneBounds = spawnZone.GetComponent<Collider>().bounds;
+        Bounds zoneBounds = spawnZone.GetComponent<MeshRenderer>().bounds;
         float x = Random.Range(zoneBounds.min.x, zoneBounds.max.x);
         float z = Random.Range(zoneBounds.min.z, zoneBounds.max.z);
         float y = spawnZone.position.y;
@@ -89,22 +86,22 @@ public class JobSpawnManager : MonoBehaviour
                 return false;
         }
 
-        if (Vector3.Distance(position, player.position) < minDistance || Vector3.Distance(position, centerShrine.position) < minDistance)
+        if (Vector3.Distance(position, SafeZone.position) < minDistance)
             return false;
 
         return true;
     }
 
-    public void HandleObjectCollected(GameObject collectedObject)
+    public void HandleEnemyDeath(GameObject deadEnemy)
     {
         // Remove the collected object from the list
-        spawnedObjects.Remove(collectedObject);
-        //Destroy(collectedObject);
+        spawnedObjects.Remove(deadEnemy);
+        Destroy(deadEnemy);
 
         // Check if we need to spawn more objects to reach the max limit
-        if (spawnedObjects.Count < maxObjects)
+        if (spawnedObjects.Count < maxEnemies)
         {
-            SpawnObject();
+            SpawnEnemies();
         }
     }
 

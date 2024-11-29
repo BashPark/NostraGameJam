@@ -1,12 +1,11 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
-public class HealthManager : MonoBehaviour
+public class EnemyHealthManager : MonoBehaviour
 {
     [SerializeField] private Image healthBar;
     [SerializeField] private float maxHealth;
@@ -16,8 +15,7 @@ public class HealthManager : MonoBehaviour
 
     [SerializeField] private Animator animator;
 
-    public float lastDamagedTime;
-
+    [SerializeField] private EnemySpawnManager enemySpawnManager;
 
     void Start()
     {
@@ -30,34 +28,15 @@ public class HealthManager : MonoBehaviour
             animator.SetBool("healthMax", true);
         }
 
-    }
-
-    private void OnCollisionEnter(Collision collision)
-    {
-        
+        enemySpawnManager = GameObject.FindGameObjectWithTag("EnemySpawnManager").GetComponent<EnemySpawnManager>();
 
     }
 
-    private void OnTriggerEnter(Collider collision)
-    {
-        if (collision.gameObject.CompareTag("Enemy"))
-        {
-            damageHealth(1f);
-        }
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
 
     public void damageHealth(float damage)
     {
         if (currentHealth > 0)
         {
-            lastDamagedTime = Time.time; // Track the time of the damage event
 
             // Deduct health
             currentHealth -= damage;
@@ -75,8 +54,6 @@ public class HealthManager : MonoBehaviour
             }
 
         }
-      
-       
 
     }
 
@@ -112,20 +89,18 @@ public class HealthManager : MonoBehaviour
 
     }
 
-
     private void checkDeath()
     {
         // Check death
         if (currentHealth <= 0)
         {
-            AudioManager.instance.PlayClip(AudioManager.instance.deathAudio, true, 0.5f);
             // Handle death
             Destroy(gameObject);
-
-            SceneManager.LoadScene("0.7Death");
+            enemySpawnManager.HandleEnemyDeath(gameObject);
 
         }
 
-
     }
+
+
 }

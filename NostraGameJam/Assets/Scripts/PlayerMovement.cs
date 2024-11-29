@@ -27,10 +27,17 @@ public class PlayerMovement : MonoBehaviour
 
     public bool canMove = false;
 
+    [SerializeField] private EnemyHealthManager enemyHealthManager;
+    [SerializeField] private EnemyAiMovement enemyAiMovement;
+
+    public float enemyLastHit;
+
     private void Start()
     {
         Joystick = GameObject.FindWithTag("Joystick").GetComponent<VariableJoystick>();
         canMove = true;
+
+        enemyLastHit = Time.time;
     }
 
     private void FixedUpdate()
@@ -114,13 +121,27 @@ public class PlayerMovement : MonoBehaviour
     public void playerAction()
     {
         // Raycast detection for Jobs,Food, Enemy
+        
         Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, 5f, jobMask);
-        if (hit.collider != null)
-        {
-
-            print(hit.collider.tag);
-        }
+    
         Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * 5f, Color.yellow);
+
+        // Player attack enemy
+        if (hit.collider != null )
+        {
+            print(hit.collider.tag);
+
+            if (hit.transform.CompareTag("Enemy"))
+            {
+                enemyHealthManager = hit.transform.GetComponent<EnemyHealthManager>();
+                enemyAiMovement = hit.transform.GetComponent<EnemyAiMovement>();
+
+                enemyHealthManager.damageHealth(1f);
+                enemyAiMovement.ApplyKnockback();
+
+                enemyLastHit = Time.time;
+            }
+        }
 
         // Start action if countdown is not going on
         if (!stopActioningCountdown)
@@ -137,6 +158,8 @@ public class PlayerMovement : MonoBehaviour
             stopActionCoroutine = StartCoroutine(handleStopAction());
 
         }
+
+       
 
 
 
@@ -212,7 +235,6 @@ public class PlayerMovement : MonoBehaviour
 
         }
 
-        print(stateInfo);
         // Return the current animation clip's length
         return stateInfo > 0 ? stateInfo : 1.0f; // Fallback to 1 second
 
